@@ -7,12 +7,12 @@ public class Assignment2Application {
 
 	public static void main(String[] args) {
 		int userInput = 0;
-		int shot = 0;
-		int number = randomNumber();
+		int guessCtr = 0;
+		int number = generateRandomNumber();
 
 		Scanner s = new Scanner(System.in);
 
-		while (shot < 6) {
+		while (guessCtr < 6) {
 			System.out.print("Pick a number between 1 and 100 ");
 			userInput = s.nextInt();
 			if (userInput < 1 || userInput > 100) {
@@ -20,14 +20,15 @@ public class Assignment2Application {
 			} else if (userInput == number) {
 				System.out.println("You Win!");
 				break;
+				//System.exit(0);
 			} else if (userInput < number) {
 				System.out.println("Please pick a higher number ");
-				shot++;
+				guessCtr++;
 			} else {
 				System.out.println("Please pick a lower number ");
-				shot++;
+				guessCtr++;
 			}
-			if (shot == 5) {
+			if (guessCtr == 5) {
 				System.out.println("You lose!");
 				System.out.println("The number to guess was: " + number);
 				break;
@@ -36,7 +37,7 @@ public class Assignment2Application {
 		s.close();
 	}
 
-	private static int randomNumber() {
+	private static int generateRandomNumber() {
 		Random random = new Random();
 		int genNumber = random.nextInt(100) + 1;
 		return genNumber;
